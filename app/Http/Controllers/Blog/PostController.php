@@ -14,6 +14,7 @@ class PostController extends Controller
     }
     public function show(Post $post)
     {
+        // dd(request()->path());
         return view('blog.show', [
             'post' => $post,
         ]);

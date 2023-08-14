@@ -24,14 +24,14 @@
                     <div>
                         <span class="mr-4">Category :</span>
                         <a href="#"
-                            class="px-3 py-1 border dark:border-orange-700 border-red-400 text-orange-400 rounded-full dark:bg-orange-400 hover:dark:bg-orange-500 dark:text-black text-xs uppercase font-semibold"
+                            class="px-3 py-1 border rounded-full hover:opacity-50 text-xs uppercase font-semibold {{ $post->category->classes }}"
                             style="font-size: 10px">{{ $post->category->name }}</a>
                     </div>
                     <div>&bull;</div>
                     <div>
                         <span class="mr-4">level :</span>
                         <a href="#"
-                            class="px-3 py-1 border dark:border-red-700 border-red-600 text-red-600  rounded-full dark:bg-red-400  dark:hover:bg-blue-500 dark:text-black text-xs uppercase font-semibold"
+                            class="px-3 py-1 border rounded-full hover:opacity-50 text-xs uppercase font-semibold {{ $post->level->classes }}"
                             style="font-size: 10px">{{ $post->level->name }}</a>
                     </div>
                 </div>

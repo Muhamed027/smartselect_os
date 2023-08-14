@@ -21,7 +21,6 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('components.blog.aside-posts', function ($view) {
-            // $posts=Post::pluck('name','slug');
             $view->with('posts', Post::query()
                 ->select('id', 'title', 'slug')
                 ->orderBy('updated_at')

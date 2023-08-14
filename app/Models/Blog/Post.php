@@ -22,6 +22,9 @@ class Post extends Model
     {
         return 'slug';
     }
+    public function isActive(){
+        return !!(request()->path()==="blog/posts/{$this->slug}");
+    }
 
     public function category(): BelongsTo
     {
