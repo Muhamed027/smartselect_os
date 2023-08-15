@@ -4,8 +4,8 @@
 
 .aside-post::before{
     position: absolute;
-    width: 3px;
-    height: 55px;
+    width: 7px;
+    height: 56px;
     left: 0;
     top: 0;
     display: block;
