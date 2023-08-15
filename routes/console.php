@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command(
+    'mohamed',
+    function () {
+        dump(Str::kebab('memad charrafi'));
+    }
+);

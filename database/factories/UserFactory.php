@@ -18,8 +18,6 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
             'username' => fake()->userName(),
             'is_admin'=>fake()->boolean(100),
             'role' => fake()->word(),

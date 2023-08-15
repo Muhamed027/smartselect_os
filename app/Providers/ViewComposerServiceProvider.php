@@ -24,7 +24,7 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with('posts', Post::query()
                 ->select('id', 'title', 'slug')
                 ->orderBy('updated_at')
-                ->simplePaginate(10));
+                ->simplePaginate(9));
         });
     }
 }

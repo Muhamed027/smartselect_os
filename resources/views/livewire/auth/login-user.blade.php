@@ -21,7 +21,7 @@
             <div class="mb-2">
                 <label for="email" class="text-white">email :</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input wire:model='email' type="text" id="email" name="email"
+                    <input wire:model='email' type="text" autofocus id="email" name="email"
                         class="w-full py-1 bg-[#18273f] px-3 rounded-lg text-white">
                 </div>
                 @error('email')
@@ -31,7 +31,7 @@
             <div class="mb-2">
                 <label for="password" class="text-white">password :</label>
                 <div>
-                    <input wire:model="password" type="text" id="password" name="password"
+                    <input wire:model="password" type="text" autofocus id="password" name="password"
                         class="w-full py-1 bg-[#18273f] px-3 rounded-lg text-white">
                 </div>
                 @error('password')
@@ -40,7 +40,7 @@
             </div>
             <div class="mt-6">
                 <span class="block w-full rounded-md shadow-sm">
-                    <button type="submit"
+                    <button type="submit" wire:loading.class="bg-indigo-800"
                         class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
                         Sign in
                     </button>

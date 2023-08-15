@@ -28,6 +28,7 @@
                 @csrf
                 <button type="submit"> log Out </button>
             </form>
+            <a href="">{{ Auth::user()->username }}</a>
             <a href="/profile">
                 <img src="{{ asset('images/lary-head.svg') }}" alt="">
             </a>

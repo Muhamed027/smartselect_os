@@ -13,7 +13,7 @@ class RegisterUser extends Component
 {
 
     #[Rule('required|min:3')]
-    public  $name = '';
+    public  $username = '';
 
     #[Rule('required|min:3|unique:users')]
     public $email = '';
@@ -34,19 +34,21 @@ class RegisterUser extends Component
     public function register()
     {
         $this->validate();
+        // dd($this->validate());
 
         $user = User::create([
+            'username' => $this->username,
             'email' => $this->email,
-            'name' => $this->name,
             'password' => Hash::make($this->password)
         ]);
 
         event(new Registered($user));
 
         Auth::login($user, true);
-        session()->flash('success', 'you are creating a new accout succefuly');
-        // sleep(10);
-        return redirect()->intended(route('home'));
+
+        return redirect()
+            ->intended(route('home'))
+            ->with('success', 'you are creating a new accout succefuly');
     }
 
     public function render()
