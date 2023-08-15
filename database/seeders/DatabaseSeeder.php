@@ -53,7 +53,6 @@ class DatabaseSeeder extends Seeder
 
 
     Status::factory()->create(['name' => 'draft', 'description' => ' can be used to indicate that the post is still in the drafting stage and not ready for public view .', 'classes' => 'bg-gray-400 dark:text-gray-100 text-white']);
-    Status::factory()->create(['name' => 'pending review', 'description' => ' can be used to indicate that the post is awaiting review before it can be published.', 'classes' => 'bg-yellow-500 dark:text-gray-100 text-white']);
     Status::factory()->create(['name' => 'rejected', 'description' => 'can be used to indicate that the post has been rejected and won\'t be published.', 'classes' => 'bg-red-500 dark:text-gray-100 text-white']);
     Status::factory()->create(['name' => 'approved', 'description' => 'can be used to indicate that the post has been approved for publication.', 'classes' => 'bg-green-500 dark:text-gray-100 text-white']);
     Status::factory()->create(['name' => 'published', 'description' => 'can be used to  indicate that the post is live and visible to readers.', 'classes' => 'bg-blue-500 dark:text-gray-100 text-white']);
@@ -74,7 +73,7 @@ class DatabaseSeeder extends Seeder
       Post::factory()->create([
         'category_id' => rand(1, 20),
         'level_id' => rand(1, 4),
-        'status_id' => rand(1, 7)
+        'status_id' => rand(1, 6)
       ]);
     }
   }

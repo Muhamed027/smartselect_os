@@ -19,7 +19,7 @@ class MustBeGlobalAdministrator
 
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()?->name == !'memad') {
+        if (Auth::user()?->email == !'memad@gmail.com') {
             abort(Response::HTTP_FORBIDDEN
         );
         }

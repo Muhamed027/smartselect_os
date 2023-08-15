@@ -10,7 +10,14 @@
 
 <body class="dark:bg-gray-950/95 bg-white text-gray-700 max-w-7xl mx-auto dark:text-gray-200 mb-40">
     <x-layouts.admin.nav />
-    {{ $slot }}
+    <div class="flex">
+        <div class="w-1/8">
+            dszadea
+        </div>
+        <div class="w-">
+            {{ $slot }}
+        </div>
+    </div>
 </body>
 
 </html>
