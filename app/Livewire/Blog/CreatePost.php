@@ -3,6 +3,7 @@
 namespace App\Livewire\Blog;
 
 use Livewire\Component;
+use App\Models\Blog\Post;
 use App\Models\Blog\Level;
 use App\Models\Blog\Status;
 use App\Models\Blog\Category;
@@ -12,18 +13,41 @@ use Illuminate\Support\Facades\Auth;
 
 class CreatePost extends Component
 {
-    #[Rule(['required', 'min:3'])]
+    #[Rule(['required', 'min:30','max:150'])]
     public $title = "";
+
+    #[Rule(['required','min:30','max:300'])]
+    public  $excerpt="";
+
+    #[Rule(['required', 'exists:categories,id'])]
     public $category = "";
+
+    #[Rule(['required', 'exists:levels,id'])]
     public $level = "";
-    public $status;
+
+    #[Rule(['required', 'exists:statuses,id'])]
+    public $status = "";
+
+    #[Rule(['required', 'min:200'])]
     public $body = "";
 
+    public $slug = "";
+    
 
     public function AddDraftPost()
     {
         if (Auth::user()->isAdmin()) {
-            $this->validate();
+            Post::create([
+                'title'=>$this->title,
+                'category_id'=>$this->category,
+                'user_id'=>Auth::user()->id,
+                'level_id'=>$this->level,
+                'status_id'=>$this->status,
+                'excerpt'=>$this->excerpt,
+                'body'=>$this->body,
+                'slug'=>str_replace(' ', '-',strtolower($this->title))
+            ]);
+            return redirect(route('blog.index'));
         }
         abort(Response::HTTP_FORBIDDEN);
     }

@@ -21,7 +21,7 @@ class PostsIndex extends Component
                     'level' => fn ($query) => $query->select('id', 'name','classes'),
                     'category' => fn ($query) => $query->select('id', 'name','classes'),
                 ])
-                ->orderBy('updated_at')
+                ->latest('updated_at')
                 ->simplePaginate(Post::PAGINATION_COUNT)
         ]);
     }

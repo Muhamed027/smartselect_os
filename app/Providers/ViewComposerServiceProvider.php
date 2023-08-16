@@ -23,7 +23,8 @@ class ViewComposerServiceProvider extends ServiceProvider
         view()->composer('components.blog.aside-posts', function ($view) {
             $view->with('posts', Post::query()
                 ->select('id', 'title', 'slug')
-                ->orderBy('updated_at')
+                ->latest('updated_at')
+
                 ->simplePaginate(9));
         });
     }
