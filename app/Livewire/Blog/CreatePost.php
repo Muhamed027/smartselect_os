@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CreatePost extends Component
 {
-    #[Rule(['required', 'min:30','max:150'])]
+    #[Rule(['required', 'min:30', 'max:150'])]
     public $title = "";
 
-    #[Rule(['required','min:30','max:300'])]
-    public  $excerpt="";
+    #[Rule(['required', 'min:30', 'max:300'])]
+    public  $excerpt = "";
 
     #[Rule(['required', 'exists:categories,id'])]
     public $category = "";
@@ -32,20 +32,20 @@ class CreatePost extends Component
     public $body = "";
 
     public $slug = "";
-    
+
 
     public function AddDraftPost()
     {
         if (Auth::user()->isAdmin()) {
             Post::create([
-                'title'=>$this->title,
-                'category_id'=>$this->category,
-                'user_id'=>Auth::user()->id,
-                'level_id'=>$this->level,
-                'status_id'=>$this->status,
-                'excerpt'=>$this->excerpt,
-                'body'=>$this->body,
-                'slug'=>str_replace(' ', '-',strtolower($this->title))
+                'title' => $this->title,
+                'category_id' => $this->category,
+                'user_id' => Auth::user()->id,
+                'level_id' => $this->level,
+                'status_id' => $this->status,
+                'excerpt' => $this->excerpt,
+                'body' => $this->body,
+                'slug' => str_replace(' ', '-', strtolower($this->title))
             ]);
             return redirect(route('blog.index'));
         }

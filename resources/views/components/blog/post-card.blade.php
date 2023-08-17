@@ -9,11 +9,11 @@
             <header>
                 <div class="space-x-2">
                     <a href="#"
-                        class="{{ $post->level->classes }} px-3 py-1 border   rounded-full hover:opacity-50 text-xs uppercase font-semibold "
-                        style="font-size: 10px">{{ $post->level->name }}</a>
-                    <a href="#"
-                        class="px-3 py-1 border  rounded-full hover:opacity-50  text-xs uppercase font-semibold {{ $post->category->classes }}" 
-                        style="font-size: 10px">{{ $post->category->name }}</a>
+                        class="px-3 py-1 border   rounded-full hover:opacity-50 text-xs uppercase font-semibold  {{ $post->level->classes }}"
+                        style="font-size: 12px">{{ $post->level->name }}</a>
+                    <a href="?category='caacaecea'"
+                        class="px-3 py-1 border  rounded-full hover:opacity-50  text-xs uppercase font-semibold  {{ $post->category->classes }}"
+                        style="font-size: 12px">{{ $post->category->name }}</a>
                 </div>
 
                 <div class="mt-4">
@@ -37,7 +37,8 @@
                 <div class="flex items-center text-sm">
                     <img src="{{ asset('images/lary-head.svg') }}" alt="Lary avatar">
                     <div class="ml-3">
-                        <h5 class="font-bold text-gray-100">{{ $post->author->username }} <small class="text-green-500"> [{{ $post->author->is_admin ? 'admin': '' }}] </small>
+                        <h5 class="font-bold text-gray-100">{{ $post->author->username }} <small class="text-green-500">
+                                [{{ $post->author->is_admin ? 'admin' : '' }}] </small>
                         </h5>
                         <h6>{!! $post->author->role !!}</h6>
                     </div>

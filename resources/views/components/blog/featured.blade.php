@@ -22,10 +22,10 @@
                 <div class="space-x-2">
                     <a href="#"
                         class="px-3 py-1 border rounded-full hover:opacity-50 text-xs uppercase font-semibold {{ $post->level->classes }}"
-                        style="font-size: 10px">{{ $post->level->name }}</a>
+                        style="font-size: 12px">{{ $post->level->name }}</a>
                     <a href="#"
                         class="px-3 py-1  border rounded-full hover:opacity-50 text-xs uppercase font-semibold {{ $post->category->classes }}"
-                        style="font-size: 10px">{{ $post->category->name }}</a>
+                        style="font-size:12px">{{ $post->category->name }}</a>
                 </div>
                 <div class="mt-4">
                     <a href="{{ route('blog.show',$post->slug) }}" class="text-3xl hover:underline transition-all duration-300 cursor-pointer line-clamp-3">
