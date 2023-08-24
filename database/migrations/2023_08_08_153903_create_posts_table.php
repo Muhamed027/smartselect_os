@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->index();
             $table->string('excerpt')->index();
             $table->longText('body')->index();
-            $table->boolean('status_id')->default(false);
+            $table->boolean('status_id')->constrained()->default(1);
             $table->foreignId('user_id')->constrained()->index();
             $table->foreignId('category_id')->constrained()->index();
             $table->foreignId('level_id')->constrained()->index();

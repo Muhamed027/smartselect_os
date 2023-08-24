@@ -152,9 +152,10 @@
     <!--Copyright section-->
     <div class="flex justify-center space-x-32 bg-neutral-200 p-6 text-center dark:bg-gray-900">
         <span>© 2023 Copyright  :</span>
-        <div class="font-bold text-lg uppercase italic"><a href="{{ route('home') }}"><span
-                    class="font-bold text-blue-600 ">Savvy</span><span class="text-red-600">Selection</span></a>
-        </div>
+        <div class="font-bold text-lg uppercase italic "><a href="{{ route('home') }}"><span
+            class="font-bold blue-text-gradient ">Smart</span><span
+            class="red-text-gradient">Select</span></a>
+</div>  
 
     </div>
 </footer>

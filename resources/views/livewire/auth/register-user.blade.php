@@ -1,9 +1,9 @@
-<div class="rounded-3xl mt-12 max-w-md mx-auto w-full dark:bg-[#0d131d]">
+<div class="rounded-3xl mt-12 max-w-md mx-auto w-full dark:bg-[#0d131d] mb-28">
     <div class="dark:text-white">
-        <a href="{{ route('home') }}" class="flex justify-center pt-8">
-            <span class="text-pink-700 uppercase font-bold">VOICE</span><span
-                class="text-sky-700 uppercase font-bold">CASTS</span>
-        </a>
+        <div class="font-bold text-lg uppercase italic text-center  "><a href="{{ route('home') }}"><span
+            class="font-bold blue-text-gradient ">Smart</span><span
+            class="red-text-gradient">Select</span></a>
+</div>
         <h2 class="mt-6 text-3xl font-extrabold text-center leading-9">
             Create a new account
         </h2>

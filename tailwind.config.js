@@ -6,6 +6,10 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   safelist:[
+    'bg-gray-200',
+    'no-underline',
+    'transition-all',
+    'divide-y-1',
     'border-solid',
     //blue color
     'border-blue-400',

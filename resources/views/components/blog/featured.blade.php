@@ -1,5 +1,5 @@
 <article
-    class="transition-colors duration-300 dark:bg-gray-900 dark:hover:border-dotted dark:border-blue-400 bg-gray-100 hover:bg-gray-200 border border-dashed border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
+    class="transition-colors duration-300 dark:bg-gray-900 dark:hover:bg-gray-950  dark:border-blue-800   bg-gray-50 hover:bg-gray-200   border border-gray-400   rounded-xl">
     <div class="py-6 px-5 lg:flex">
         <div class="flex-1 space-y-12 lg:mr-8 ">
             <div class="overflow-hidden rounded-xl">
@@ -25,7 +25,7 @@
                         style="font-size: 10px">{{ $post->level->name }}</a>
                     <a href="#"
                         class="px-3 py-1  border rounded-full hover:opacity-50 text-xs uppercase font-semibold {{ $post->category->classes }}"
-                        style="font-size: 10px">{{ $post->category->name }}</a>
+                        style="font-size:10px">{{ $post->category->name }}</a>
                 </div>
                 <div class="mt-4">
                     <a href="{{ route('blog.show',$post->slug) }}" class="text-3xl hover:underline transition-all duration-300 cursor-pointer line-clamp-3">

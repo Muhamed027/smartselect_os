@@ -11,7 +11,8 @@ class Post extends Model
 {
     use HasFactory;
 
-    const PAGINATION_COUNT =9;
+    const PAGINATION_COUNT = 9;
+    protected $guarded = [];
     /**
      * Get the category that owns the Post
      *
@@ -22,8 +23,9 @@ class Post extends Model
     {
         return 'slug';
     }
-    public function isActive(){
-        return !!(request()->path()==="blog/posts/{$this->slug}");
+    public function isActive()
+    {
+        return !!(request()->path() === "blog/posts/{$this->slug}");
     }
 
     public function category(): BelongsTo
