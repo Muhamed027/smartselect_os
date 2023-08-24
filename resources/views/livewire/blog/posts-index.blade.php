@@ -1,9 +1,11 @@
 <div>
-    <x-filters/>
+    <x-filters :categories="$categories" />
     <main class="mt-8 gap-12 flex">
         <aside
             class=" hidden overflow-y-auto   lg:sticky lg:top-20  lg:flex lg:justify-start lg:items-start lg:flex-col w-1/4 pb-10 px-8  h-full lg  space-y-2   ">
-            <x-create-new-resource uri="blog.create" text="Add new Article"/>
+            @admin
+                <x-create-new-resource uri="blog.create" text="Add new Article" />
+            @endadmin
             <h2 class="text-blue-950 font-semibold ml-2 dark:text-gray-400 ">Articles:</h2>
             <x-blog.aside-posts />
         </aside>
@@ -17,7 +19,7 @@
                         @endforeach
                     </div>
                 @endif
-                <div class="text-black">{{ $posts->links() }}</div>
+                <div class="text-black dark:text-white">{{ $posts->links() }}</div>
             @endif
         </div>
     </main>

@@ -4,8 +4,9 @@ namespace App\Livewire\Blog;
 
 use Livewire\Component;
 use App\Models\Blog\Post;
-use Illuminate\Support\Facades\View;
 use Livewire\WithPagination;
+use App\Models\Blog\Category;
+use Illuminate\Support\Facades\View;
 
 class PostsIndex extends Component
 {
@@ -22,7 +23,10 @@ class PostsIndex extends Component
                     'category' => fn ($query) => $query->select('id', 'name','classes'),
                 ])
                 ->latest('updated_at')
-                ->simplePaginate(Post::PAGINATION_COUNT)
+                ->paginate(Post::PAGINATION_COUNT),
+            'categories'=>Category::query()
+                ->select('id','name')
+                ->get()
         ]);
     }
 }

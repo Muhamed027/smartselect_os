@@ -2,16 +2,14 @@
 
 namespace App\Providers;
 
-
-use App\Models\Blog\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class BladeDirectiveServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      */
     public function register(): void
     {
@@ -19,10 +17,12 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      */
     public function boot(): void
     {
-        
+        Blade::if('admin', function () {
+            return !!(Auth::check() && Auth::user()->isAdmin());
+        });
     }
 }

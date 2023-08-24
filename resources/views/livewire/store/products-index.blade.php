@@ -1,6 +1,9 @@
 <div class="max-w-6xl mx-auto">
     {{-- filters --}}
-    <x-filters/>
+    @php
+        $categories=\App\Models\Blog\Category::query()->select('id','name')->get()
+    @endphp
+    <x-filters :categories="$categories"/>
 
     <!-- products section -->
     <main class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-around mt-8 gap-12 ">

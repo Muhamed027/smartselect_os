@@ -12,6 +12,16 @@
     content: '';
     background-color: rgb(48, 108, 213);
 }
+.aside-post-white::before {
+    position: absolute;
+    width: 3px;
+    height: 55px;
+    left: 0;
+    top: 0;
+    display: block;
+    content: '';
+    background-color: rgb(94, 104, 122);
+}
 .gradient {
     height: fit-content;
     z-index: 3;

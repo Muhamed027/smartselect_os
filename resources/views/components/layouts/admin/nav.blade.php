@@ -1,22 +1,39 @@
-<header
+<header x-data="{ show: false }"
     class="flex sticky z-30  top-0 backdrop-blur-lg   justify-between border-b border-blue-950 items-center w-full  px-4 py-2 text-md rounded-b-xl font-semibold">
     <div class="flex items-center space-x-4">
         <div class="flex relative space-x-32 items-center">
             <div class="font-semibold ">
-                <div class="font-bold text-lg uppercase italic"><a href="{{ route('home') }}"><span class="font-bold text-blue-600 ">Savvy</span><span class="text-red-600">Selection</span></a></div>
-            </div>
+                <div class="font-bold text-lg uppercase italic shadow"><a href="{{ route('home') }}"><span
+                    class="font-bold blue-text-gradient ">Smart</span><span
+                    class="red-text-gradient">Select</span></a>
+        </div>            </div>
         </div>
        
     </div>
     <div class="hidden lg:flex users space-x-4">
         @auth
-            <form action="/logout" method="post">
-                @csrf
-                <button type="submit"> log Out </button>
-            </form>
-            <a href="/profile">
-                <img src="{{ asset('images/lary-head.svg') }}" alt="">
-            </a>
+            <div x-data="{}"  class="relative ">
+                <button x-on:click="show=!show">
+                    <img src="{{ asset('images/lary-head.svg') }}" alt="">
+                </button>
+                <div x-show="show" class=" absolute top-30 right-4 w-48 h-ful bg-gray-800  py-4 rounded-xl"
+                    x-on:click.away="show=false" style="display: none;">
+                    <div class="text-center mx-4 ">hello <span
+                            class="text-white">&SmallCircle;{{ Auth::user()->username }}&SmallCircle;</span> </div>
+                    <a href="#" class="hover:bg-gray-700 py-2  block "><small
+                            class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Profile</span></a>
+                            
+                    <a href="/admin" class="hover:bg-gray-700 py-2  block ml-"><small
+                            class="blue-text-gradient font-bold mr-2 text-start ml-2"> //</small><span>Dashboard</span></a>
+                    <div class="hover:bg-gray-700 py-2 flex items-center ">
+                        <small class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit"> log Out </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         @endauth
     </div>
     <!-- mobile menu  -->
