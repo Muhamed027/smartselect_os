@@ -2,10 +2,10 @@
 
 namespace App\Models\Blog;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\User;
 
 class Post extends Model
 {
@@ -22,7 +22,7 @@ class Post extends Model
 
     public function scopeSearch($query, string $terms)
     {
-        collect(str_getcsv($terms, ' ', '"'))->filter()->each(function ($term) use ($query) {
+        collect(str_getcsv($terms, '', '"'))->filter()->each(function ($term) use ($query) {
             $term = $term. "%";
             $query->whereIn('id', function ($query) use ($term) {
                 $query->select('id')
@@ -74,5 +74,20 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+
+    }
+
+        /**
+     * Get the indexable data array for the model.
+     *
+     * @return array<string, mixed>
+     */
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+ 
+        // Customize the data array...
+ 
+        return $array;
     }
 }

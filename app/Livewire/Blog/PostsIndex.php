@@ -20,6 +20,8 @@ class PostsIndex extends Component
     public $category;
     #[Url(keep: false)]
     public string $search;
+    #[Url(keep: false)]
+    public $filter;
     public $levelCount;
     public $categoryCount;
 
@@ -36,6 +38,10 @@ class PostsIndex extends Component
     {
         $this->resetPage();
         $this->level = $newLevel;
+    }
+    public function updatingLevel()
+    {
+        $this->resetPage();
     }
     public function updatingCategory()
     {
@@ -62,8 +68,18 @@ class PostsIndex extends Component
                     return $query->where('level_id', $levels->get($this->level));
                 })->when($this->category && $this->category !== 'All', function ($query) use ($categories) {
                     return $query->where('category_id', $categories->get($this->category));
-                })->search($this->search)
-                ->latest('updated_at')
+                })->when($this->filter && $this->filter === "Recently Posted", fn ($query) => $query
+                    ->select('id', 'title', 'slug', 'excerpt', 'user_id', 'level_id', 'category_id', 'created_at')
+                    ->with([
+                        'author' => fn ($query) => $query->select('id', 'username', 'role', 'is_admin'),
+                        'level' => fn ($query) => $query->select('id', 'name', 'classes'),
+                        'category' => fn ($query) => $query->select('id', 'name', 'classes'),
+                    ])->orderBy('updated_at', 'desc')->paginate(9))
+                ->when(
+                    strlen($this->search) >= 2,
+                    fn ($query) =>
+                    $query->search($this->search)
+                )
                 ->paginate(9),
             'categories' => Category::query()
                 ->select('id', 'name')
