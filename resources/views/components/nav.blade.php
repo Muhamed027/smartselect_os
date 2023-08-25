@@ -12,11 +12,11 @@
         </div>
         <div class="hidden lg:flex  items-center space-x-12">
             <ul class="flex space-x-4">
-                <a href="{{ route('home') }}" class="px-4 py-1 {{ isActive('/', 'bg-gray-500 rounded-xl') }}">Home</a>
+                <a href="{{ route('home') }}" class="px-4 py-1">Home</a>
                 <a href="{{ route('store.index') }}"
-                    class="{{ isActive('/store', 'dark:bg-gray-900 bg-gray-600') }}  rounded-lg px-4 py-1">products</a>
+                    class="  rounded-lg px-4 py-1">products</a>
                 <a href="{{ route('blog.index') }}"
-                    class="px-4 py-1 rounded-lg {{ isActive('/blog', 'dark:bg-gray-900 bg-gray-600') }}">blog</a>
+                    class="px-4 py-1 rounded-lg">blog</a>
             </ul>
         </div>
     </div>

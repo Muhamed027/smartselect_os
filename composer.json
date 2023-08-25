@@ -11,7 +11,7 @@
         "laravel/prompts": "^0.1.3",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "livewire/livewire": "v3.0.0-beta.9"
+        "livewire/livewire": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

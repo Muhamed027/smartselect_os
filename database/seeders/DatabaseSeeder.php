@@ -61,10 +61,10 @@ class DatabaseSeeder extends Seeder
 
 
 
-    Level::factory()->create(['name' => 'begginer', 'classes' => 'border-yellow-800  text-yellow-800 ']);
+    Level::factory()->create(['name' => 'beginner', 'classes' => 'border-yellow-800  text-yellow-800 ']);
     Level::factory()->create(['name' => 'advanced', 'classes' => 'border-green-800  text-green-800']);
     Level::factory()->create(['name' => 'intermediate', 'classes' => 'border-blue-800  text-blue-800']);
-    Level::factory()->create(['name' => 'experts', 'classes' => 'border-orange-800  text-orange-800 ']);
+    Level::factory()->create(['name' => 'expert', 'classes' => 'border-orange-800  text-orange-800 ']);
 
 
 

@@ -23,9 +23,6 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 |
 */
 
- function isActive($param,string $classes){
-    return  request()->is($param) ? "{$classes}" : "";
-}
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 // Route::get('/test', function () {

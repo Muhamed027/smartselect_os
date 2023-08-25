@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Models\Blog\Post;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller
@@ -17,6 +17,7 @@ class PostController extends Controller
         // dd(request()->path());
         return view('blog.show', [
             'post' => $post,
+            'backUrl' => URL::previous() !== URL::full() ? URL::previous() : route('blog.index')
         ]);
     }
     public function create()

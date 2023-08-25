@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('classes');
+            $table->string('name_normalized')->virtualAs("regexp_replace(name,'[^A-Za-z0-9]','')")->index();
+            $table->string('classes')->index();
             $table->timestamps();
         });
     }

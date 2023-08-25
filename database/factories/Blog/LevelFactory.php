@@ -17,8 +17,8 @@ class LevelFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>fake()->word(),
-            'classes'=>fake()->slug(),
+            'name'=>fake()->word(2,true),
+            'classes'=>'text-blue-200 border-blue-200',
         ];
     }
     

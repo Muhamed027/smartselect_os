@@ -13,6 +13,7 @@ module.exports = {
     'border-solid',
     //blue color
     'border-blue-400',
+    'border-blue-800',
     'text-blue-400',
     'hove:border-blue-500',
     'hove:text-blue-500',

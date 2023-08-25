@@ -19,6 +19,29 @@ class Post extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
 
+
+    public function scopeSearch($query, string $terms)
+    {
+        collect(str_getcsv($terms, ' ', '"'))->filter()->each(function ($term) use ($query) {
+            $term = $term. "%";
+            $query->whereIn('id', function ($query) use ($term) {
+                $query->select('id')
+                    ->from(function ($query) use ($term) {
+                        $query->select('id')
+                            ->from('posts')
+                            ->where('title','like',$term)
+                            ->orWhere('body','like',$term)
+                            ->union(
+                                $query->newQuery()
+                                    ->select('posts.id')
+                                    ->from('posts')
+                                    ->join('categories', 'categories.id', '=', 'posts.category_id')
+                                    ->where('categories.name','like',$term)
+                            );
+                    }, 'matches');
+            });
+        });
+    }
     public function getRouteKeyName()
     {
         return 'slug';
