@@ -20,8 +20,5 @@ class PostController extends Controller
             'backUrl' => URL::previous() !== URL::full() ? URL::previous() : route('blog.index')
         ]);
     }
-    public function create()
-    {
-        return view('blog.create');
-    }
+   
 }

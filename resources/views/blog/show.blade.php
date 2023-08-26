@@ -6,8 +6,8 @@
             <x-blog.aside-posts />
         </aside>
         <div class="w-3/4 pb-10 px-8 space-y-4 mt-8 ">
-            @dump(url()->previous())
-            @dump(url()->full())
+            {{-- @dump(url()->previous())
+            @dump(url()->full()) --}}
             <a href="{{ $backUrl }}" class="flex items-center space-x-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="h-4 w-4">

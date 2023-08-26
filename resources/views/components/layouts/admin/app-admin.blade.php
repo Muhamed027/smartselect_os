@@ -88,7 +88,7 @@
 
                         </div>
                         <ul x-show="show" class="ml-2 space-y-4 py-2   divide-blue-800">
-                            <li><a href="#" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small
+                            <li><a href="{{ route('blog.admin.index') }}" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small
                                         class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Posts</span></a>
                             </li>
                             <li><a href="#" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small

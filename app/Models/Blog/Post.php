@@ -23,7 +23,7 @@ class Post extends Model
     public function scopeSearch($query, string $terms)
     {
         collect(str_getcsv($terms, '', '"'))->filter()->each(function ($term) use ($query) {
-            $term = $term. "%";
+            $term = "%".$term. "%";
             $query->whereIn('id', function ($query) use ($term) {
                 $query->select('id')
                     ->from(function ($query) use ($term) {

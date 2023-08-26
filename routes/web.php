@@ -4,13 +4,14 @@ use App\Livewire\Auth\LoginUser;
 use App\Livewire\Auth\RegisterUser;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\Blog\PostController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Store\StoreController;
-use App\Http\Middleware\MustBeGlobalAdministrator;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\MustBeGlobalAdministrator;
+use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\admin\HomeController as AdminHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,8 @@ Route::middleware('web')->prefix('blog')->group(function () {
         ->name('blog.show');
 });
 Route::middleware(MustBeGlobalAdministrator::class)->prefix('admin')->group(function () {
-    Route::get('/blog/posts/create',[PostController::class,'create'])->name('blog.create');
+    Route::get('/blog/posts/create',[AdminPostController::class,'create'])->name('blog.create');
+    Route::get('/blog/posts',[AdminPostController::class,'index'])->name('blog.admin.index');
     Route::get('/',[AdminHomeController::class,'index'])->name('admin.home');
 });
 

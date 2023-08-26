@@ -1,9 +1,10 @@
 <div>
-    <div class="max-w-4xl mx-auto space-x-8 flex justify-around items-center mt-8 text-gray-400">
-        <!-- categories -->
-        {{-- @dd($categories) --}}
+    {{-- @dump($search_result) --}}
+    <div class="relative max-w-4xl mx-auto space-x-8 flex justify-around items-center mt-8 text-gray-400">
+        <x-modal-search :search_result="$search_result->toArray()"
+                        :search_result_count="$search_result_count"/>
         <div
-            class="relative flex w-1/4 lg:inline-flex items-center bg-gray-50 border   border-gray-400 dark:border-blue-800  dark:bg-gray-900 rounded-xl">
+            class="relative flex w-1/3 lg:inline-flex items-center bg-gray-50 border overflow-hidden  border-gray-400 dark:border-blue-800  dark:bg-gray-900 rounded-xl">
             <select wire:model.live.debounce.100ms="category"
                 class="flex-1 appearance-none bg-gray-50 dark:bg-gray-900 rounded-xl py-2 pl-3 pr-9 text-sm font-semibold overflow-y-hidden">
                 <option value="All" selected> <span class="text-gray-700 overflow-y-hidden">Categories</span> :
@@ -20,7 +21,7 @@
         </div>
         <!-- Other Filters -->
         <div
-            class="relative flex w-1/4 lg:inline-flex items-center bg-gray-50 border hover:bg-gray-200  border-gray-400 dark:border-blue-800 dark:bg-gray-900 rounded-xl">
+            class="relative flex w-1/3 lg:inline-flex items-center bg-gray-50 border hover:bg-gray-200  border-gray-400 dark:border-blue-800 dark:bg-gray-900 rounded-xl">
             <select wire:model.live="filter"
                 class="flex-1 appearance-none bg-gray-50 dark:bg-gray-900 rounded-xl py-2 pl-3 pr-9 text-sm font-semibold">
                 <option value="category" disabled selected>Other Filters
@@ -34,8 +35,8 @@
         </div>
 
         <!-- Search -->
-        <div class="relative w-1/2 rounded-xl bg-gray-50 dark:bg-gray-900 border  border-gray-400 dark:border-blue-800">
-            <input wire:model.live="search" type="search"
+        <div class="relative w-1/3 rounded-xl bg-gray-50 dark:bg-gray-900 border  border-gray-400 dark:border-blue-800">
+            <input x-on:click="$dispatch('open-search-modal')" type="search"
                 class="dark:bg-gray-900 bg-indigo-50  w-full dark:placeholder-gray-700 text-opacity-40 flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold rounded-xl"
                 placeholder="Quick Search / press ctrl+K">
             <x-icons.search-icon />
@@ -57,28 +58,28 @@
                 <ul class="flex uppercase font-semibold border-b-4 border-gray-500 pb-3  space-x-3">
                     <li>
                         <a wire:click.prevent="setLevel('All')" href="#"
-                            class=" border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-white px-2 {{ $level === 'All' ? 'border-blue-600 text-white' : '' }}">All
+                            class=" border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-gray-800 dark:hover:text-white px-2 {{ $level === 'All' ? 'dark:border-blue-600 border-gray-900 dark:text-white text-gray-900' : '' }}">All
                             levels({{ $levelCount['all_levels'] }})
 
                         </a>
                     </li>
                     <li>
                         <a wire:click.prevent="setLevel('beginner')" href="#"
-                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-white px-2 {{ $level === 'beginner' ? 'border-blue-600 text-white' : '' }}">beginners({{ $levelCount['beginner'] }})
+                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-gray-800 dark:hover:text-white px-2 {{ $level === 'beginner' ? 'dark:border-blue-600 border-gray-900 dark:text-white text-gray-900' : '' }}">beginners({{ $levelCount['beginner'] }})
                         </a>
                     </li>
                     <li>
                         <a wire:click.prevent="setLevel('intermediate')" href="#"
-                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150  hover:text-white px-2 {{ $level === 'intermediate' ? 'border-blue-600 text-white' : '' }}">intermediate({{ $levelCount['intermediate'] }})
+                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-gray-800  dark:hover:text-white px-2 {{ $level === 'intermediate' ? 'dark:border-blue-600 border-gray-900 dark:text-white text-gray-900' : '' }}">intermediate({{ $levelCount['intermediate'] }})
                         </a>
                     </li>
                 </ul>
                 <ul class="flex uppercase font-semibold border-b-4 border-gray-500  pb-3 space-x-3">
                     <li><a wire:click.prevent="setLevel('advanced')" href="#"
-                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150  hover:text-white px-2 {{ $level === 'advanced' ? 'border-blue-600 text-white' : '' }}">advanced({{ $levelCount['advanced'] }})
+                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-gray-800  dark:hover:text-white px-2 {{ $level === 'advanced' ? 'dark:border-blue-600 border-gray-900 dark:text-white text-gray-900' : '' }}">advanced({{ $levelCount['advanced'] }})
                         </a></li>
                     <li><a wire:click.prevent="setLevel('expert')" href="#"
-                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150  hover:text-white px-2 {{ $level === 'expert' ? 'border-blue-600 text-white' : '' }}">expert({{ $levelCount['expert'] }})
+                            class="transition border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-gray-800  dark:hover:text-white px-2 {{ $level === 'expert' ? 'dark:border-blue-600 border-gray-900 dark:text-white text-gray-900' : '' }}">expert({{ $levelCount['expert'] }})
                         </a></li>
                 </ul>
             </nav>

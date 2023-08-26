@@ -5,6 +5,7 @@ namespace App\Livewire\Blog;
 use Livewire\Component;
 use App\Models\Blog\Post;
 use App\Models\Blog\Level;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use App\Models\Blog\Category;
@@ -31,7 +32,7 @@ class PostsIndex extends Component
         $this->categoryCount = (new Category)->getCount();
         $this->level = request()->level ?? 'All';
         $this->category = request()->category ?? 'All';
-        $this->search = request()->query('search') ?? '';
+        $this->search = request()->query('search') ?? "";
     }
 
     public function setLevel($newLevel)
@@ -52,7 +53,10 @@ class PostsIndex extends Component
         $this->resetPage();
     }
 
-    // #[On('queryUrlUpdatedLevel')]
+    #[On('search_modal_closed')]
+    public function resetSearch(){
+        $this->search="";
+    }
     public function render()
     {
         $levels = Level::all()->pluck('id', 'name');
@@ -68,22 +72,23 @@ class PostsIndex extends Component
                     return $query->where('level_id', $levels->get($this->level));
                 })->when($this->category && $this->category !== 'All', function ($query) use ($categories) {
                     return $query->where('category_id', $categories->get($this->category));
-                })->when($this->filter && $this->filter === "Recently Posted", fn ($query) => $query
-                    ->select('id', 'title', 'slug', 'excerpt', 'user_id', 'level_id', 'category_id', 'created_at')
-                    ->with([
-                        'author' => fn ($query) => $query->select('id', 'username', 'role', 'is_admin'),
-                        'level' => fn ($query) => $query->select('id', 'name', 'classes'),
-                        'category' => fn ($query) => $query->select('id', 'name', 'classes'),
-                    ])->orderBy('updated_at', 'desc')->paginate(9))
-                ->when(
-                    strlen($this->search) >= 2,
-                    fn ($query) =>
-                    $query->search($this->search)
-                )
+                })
                 ->paginate(9),
             'categories' => Category::query()
                 ->select('id', 'name')
-                ->get()
+                ->get(),
+            'search_result'=>Post::when(
+                strlen($this->search) >= 2,
+                fn ($query) =>
+                $query->search($this->search)
+            )
+            ->get(),
+            'search_result_count'=>Post::when(
+                strlen($this->search) >= 2,
+                fn ($query) =>
+                $query->search($this->search)
+            )
+            ->count(),
         ]);
     }
 }
