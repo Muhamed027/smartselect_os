@@ -6,6 +6,18 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   safelist:[
+
+    //status
+    'bg-green-200',
+    'text-green-800',
+    'bg-blue-200',
+    'bg-red-200',
+    'bg-orange-200',
+    'bg-slate-200',
+    'text-blue-800',
+    'text-red-800',
+    'text-orange-800',
+    'text-slate-800',
     'bg-gray-200',
     'no-underline',
     'transition-all',

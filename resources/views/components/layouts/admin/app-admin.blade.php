@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="dak" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -11,7 +11,7 @@
 
 <body class="dark:bg-gray-950 bg-white text-gray-700 max-w-7l mx-auto dark:text-gray-200 mb-40">
     <x-layouts.admin.nav/>
-    <div x-data="{ open: true }" class="dark:bg-gray-950   bg-gray-100 text-gray-700   dark:text-gray-200 mb-40 mt-">
+    <div x-data="{ open: false }" class="dark:bg-gray-950   bg-gray-100 text-gray-700   dark:text-gray-200 mb-40 mt-">
         <aside :class="open ? 'translate-x-0' : '-translate-x-60'"
             class="w-60 dark:bg-gray-900 bg-gray-100  fixed top-12  transform ease-in-out duration-1000 rounded-r-xl  z-50 h-screen px-2">
             <div

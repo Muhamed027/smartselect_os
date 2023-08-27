@@ -73,7 +73,7 @@ class PostsIndex extends Component
                 })->when($this->category && $this->category !== 'All', function ($query) use ($categories) {
                     return $query->where('category_id', $categories->get($this->category));
                 })
-                ->paginate(9),
+                ->paginate(Post::PAGINATION_COUNT),
             'categories' => Category::query()
                 ->select('id', 'name')
                 ->get(),

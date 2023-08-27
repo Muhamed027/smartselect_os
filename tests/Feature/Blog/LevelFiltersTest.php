@@ -33,7 +33,7 @@ class LevelFiltersTest extends TestCase
         ]);
         $this->get(route('blog.index'))
                 ->assertSeeLivewire(LevelFilters::class);
-        Livewire::test(Level)
+        Livewire::test(Level::class);
     }
     // public function  test_shows_correct_level_count(){
 

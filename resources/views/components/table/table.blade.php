@@ -5,7 +5,7 @@
                 {{ $head }}
             </tr>
         </thead>
-        <tbody>
+        <tbody class="divide-y dark:divide-gray-50 divide-gray-800">
             {{ $body }}
         </tbody>
     </table>

@@ -20,8 +20,9 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => User::factory()->create(),
-            'category_id' => 1,
-            'level_id'=>1,
+            'category_id' =>rand(1,20),
+            'level_id'=>1,  
+            'status_id'=>1,
             'title' => fake()->paragraph(2),
             'slug' => fake()->slug(),
             'excerpt' => fake()->paragraph(2),

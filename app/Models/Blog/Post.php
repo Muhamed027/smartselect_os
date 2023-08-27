@@ -3,6 +3,7 @@
 namespace App\Models\Blog;
 
 use App\Models\User;
+use App\Models\Blog\Status;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,20 +24,20 @@ class Post extends Model
     public function scopeSearch($query, string $terms)
     {
         collect(str_getcsv($terms, '', '"'))->filter()->each(function ($term) use ($query) {
-            $term = "%".$term. "%";
+            $term = "%" . $term . "%";
             $query->whereIn('id', function ($query) use ($term) {
                 $query->select('id')
                     ->from(function ($query) use ($term) {
                         $query->select('id')
                             ->from('posts')
-                            ->where('title','like',$term)
-                            ->orWhere('body','like',$term)
+                            ->where('title', 'like', $term)
+                            ->orWhere('body', 'like', $term)
                             ->union(
                                 $query->newQuery()
                                     ->select('posts.id')
                                     ->from('posts')
                                     ->join('categories', 'categories.id', '=', 'posts.category_id')
-                                    ->where('categories.name','like',$term)
+                                    ->where('categories.name', 'like', $term)
                             );
                     }, 'matches');
             });
@@ -64,7 +65,30 @@ class Post extends Model
     {
         return $this->belongsTo(Level::class, 'level_id');
     }
+    /**
+     * Get the statusé that owns the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'status_id');
+    }
+    public function getStatusColorAttribute()
+    {
+        return [
+            '1' => 'gray',
+            '2' => 'red',
+            '3' => 'green',
+            '4' => 'blue',
+            '5' => 'orange',
+            '6' => 'slate',
+        ][$this->status_id] ?? 'gray';
+    }
 
+    // public function getDateForHumansAttribute(){
+    //     return $this->date->format('M, d y');
+    // }
     /**
      * Get the author that owns the Post
      *
@@ -74,10 +98,9 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
-
     }
 
-        /**
+    /**
      * Get the indexable data array for the model.
      *
      * @return array<string, mixed>
@@ -85,9 +108,9 @@ class Post extends Model
     public function toSearchableArray(): array
     {
         $array = $this->toArray();
- 
+
         // Customize the data array...
- 
+
         return $array;
     }
 }

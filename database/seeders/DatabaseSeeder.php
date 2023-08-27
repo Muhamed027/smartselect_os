@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
     ]);
 
     User::factory(9)->create(['is_admin' => 1, 'role' => 'writter at  <span
-    class="font-bold text-blue-600 ">Savvy</span><span class="text-red-600 font-bold">Selection</span>']);
+    class="font-bold text-blue-600 ">smart</span><span class="text-red-600 font-bold">Select</span>']);
 
 
     Category::factory()->create(['name' => 'Electronics and Gadgets', 'classes' => "border-blue-400  text-blue-400 hover:border-blue-500  hover:text-blue-500"]);
@@ -52,12 +52,12 @@ class DatabaseSeeder extends Seeder
 
 
 
-    Status::factory()->create(['name' => 'draft', 'description' => ' can be used to indicate that the post is still in the drafting stage and not ready for public view .', 'classes' => 'bg-gray-400 dark:text-gray-100 text-white']);
-    Status::factory()->create(['name' => 'rejected', 'description' => 'can be used to indicate that the post has been rejected and won\'t be published.', 'classes' => 'bg-red-500 dark:text-gray-100 text-white']);
-    Status::factory()->create(['name' => 'approved', 'description' => 'can be used to indicate that the post has been approved for publication.', 'classes' => 'bg-green-500 dark:text-gray-100 text-white']);
-    Status::factory()->create(['name' => 'published', 'description' => 'can be used to  indicate that the post is live and visible to readers.', 'classes' => 'bg-blue-500 dark:text-gray-100 text-white']);
-    Status::factory()->create(['name' => 'unpublished', 'description' => 'can be used to indicate that the post was previously published but is currently hidden.', 'classes' => 'bg-purple-500 dark:text-gray-100 text-white']);
-    Status::factory()->create(['name' => 'Archived', 'description' => 'can be used to indicate that the post is stored for reference but not currently active.', 'classes' => 'bg-gray-600 dark:text-gray-100 text-white']);
+    Status::factory()->create(['name' => 'draft', 'description' => ' can be used to indicate that the post is still in the drafting stage and not ready for public view .', 'classes' => ' dark:text-gray-100 text-white']);
+    Status::factory()->create(['name' => 'rejected', 'description' => 'can be used to indicate that the post has been rejected and won\'t be published.', 'classes' => ':text-gray-100 text-white']);
+    Status::factory()->create(['name' => 'approved', 'description' => 'can be used to indicate that the post has been approved for publication.', 'classes' => ' dark:text-gray-100 text-white']);
+    Status::factory()->create(['name' => 'published', 'description' => 'can be used to  indicate that the post is live and visible to readers.', 'classes' => ' dark:text-gray-100 text-white']);
+    Status::factory()->create(['name' => 'unpublished', 'description' => 'can be used to indicate that the post was previously published but is currently hidden.', 'classes' => ' dark:text-gray-100 text-white']);
+    Status::factory()->create(['name' => 'archived', 'description' => 'can be used to indicate that the post is stored for reference but not currently active.', 'classes' => ' dark:text-gray-100 text-white']);
 
 
 
@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
 
 
     Post::factory(5)->create(['user_id' => 1]);
-    foreach (range(1, 100) as $post) {
+    foreach (range(1, 40) as $post) {
       Post::factory()->create([
         'category_id' => rand(1, 20),
         'level_id' => rand(1, 4),
