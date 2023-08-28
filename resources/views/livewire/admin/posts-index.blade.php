@@ -1,5 +1,9 @@
 <div class="overflow-x-auto">
     <div class="relative  shadow-md sm:rounded-xl mt-12">
+        <div>
+            <x-forms.input-text wire:model.live="search" placeholder="search for specific record "/>
+            
+        </div>
         <x-table.table>
             <x-slot name="head">
                 <tr>
@@ -50,5 +54,8 @@
                 @endforeach
             </x-slot>
         </x-table.table>
+        <div>
+            {{ $posts->links() }}
+        </div>
     </div>
 </div>

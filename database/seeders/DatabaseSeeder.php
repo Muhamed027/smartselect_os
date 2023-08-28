@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
       'username' => 'memad',
       'email' => 'memad@gmail.com',
       'is_admin' => 1,
-      'role' => 'founder of <span
-      class="font-bold text-blue-600 ">Savvy</span><span class="text-red-600 font-bold">Selection</span>'
+      'role' => 'founder of <span class="text-xs "> <span
+      class="font-bold red-text-gradient uppercase">smart</span><span class="blue-text-gradient uppercase font-bold">Select</span></span>'
     ]);
 
     User::factory(9)->create(['is_admin' => 1, 'role' => 'writter at  <span
-    class="font-bold text-blue-600 ">smart</span><span class="text-red-600 font-bold">Select</span>']);
+    class="font-bold red-text-gradient">smart</span><span class="red-text-gradient font-bold">Select</span>']);
 
 
     Category::factory()->create(['name' => 'Electronics and Gadgets', 'classes' => "border-blue-400  text-blue-400 hover:border-blue-500  hover:text-blue-500"]);

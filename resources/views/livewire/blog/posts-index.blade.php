@@ -94,7 +94,7 @@
                         </div>
                     @endif
 
-                    <div class="text-black dark:text-white">{{ $posts->appends(request()->query())->links() }}</div>
+                    <div class="text-black dark:text-white">{{ $posts->appends(request()->query())->links('vendor.livewire.post-index-pagination') }}</div>
                 @else
                     there is no result
                 @endif

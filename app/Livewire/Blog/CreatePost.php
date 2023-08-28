@@ -45,7 +45,6 @@ class CreatePost extends Component
                 'status_id' => $this->status,
                 'excerpt' => $this->excerpt,
                 'body' => $this->body,
-                'slug' => str_replace(' ', '-', strtolower($this->title))
             ]);
             return redirect(route('blog.index'));
         }

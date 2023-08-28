@@ -10,7 +10,7 @@
         class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
     </div>
     <div x-transition.opacity.2000ms
-        class="fixed inset-x-0 z-10 overflow-y-auto">
+        class="fixed inset-x-0 z-10 overflow-y-auto dark:text-gray-100">
         <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 
             <div
@@ -27,14 +27,14 @@
                             <div
                                 class="relative w-full rounded-xl bg-gray-50 dark:bg-gray-900 border  border-gray-400 dark:border-blue-800 focus:ring-none">
                                 <input wire:model.live="search" type="search" x-ref="search_field"
-                                    class="dark:bg-gray-900   w-full dark:placeholder-gray-700 text-opacity-40 flex-appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold rounded-xl"
+                                    class="dark:bg-gray-900   w-full dark:placeholder-gray-700 text-opacity-40 dark:text-gray-200 flex-appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold rounded-xl"
                                     placeholder="Quick Search / press ctrl+K">
                                 <x-icons.search-icon />
                             </div>
-                            <div class="text-xs flex  w-full px-4 pt-2 text-center items-center justify-center ">there
+                            <div class="text-xs flex  w-full px-4 pt-2 text-center items-center justify-center dark:text-gray-100 ">there
                                 is {{ $search_result_count }} result found </div>
                             <div class="mt-2 max-h-[320px] overflow-y-auto">
-                                <ul class="space-y-2">
+                                <ul class="space-y-2  dark:text-gray-200">
                                     @foreach ($search_result as $result)
                                         {{-- @dump($search_resul) --}}
                                         <li class="rounded-md px-1 py-1 border dark:border-pink-800 border-gray-300">

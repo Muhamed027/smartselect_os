@@ -5,21 +5,16 @@ namespace App\Models\Blog;
 use App\Models\User;
 use App\Models\Blog\Status;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     const PAGINATION_COUNT = 9;
     protected $guarded = [];
-    /**
-     * Get the category that owns the Post
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-
 
     public function scopeSearch($query, string $terms)
     {
@@ -32,12 +27,55 @@ class Post extends Model
                             ->from('posts')
                             ->where('title', 'like', $term)
                             ->orWhere('body', 'like', $term)
+                            ->orWhere('excerpt','like',$term)
                             ->union(
                                 $query->newQuery()
                                     ->select('posts.id')
                                     ->from('posts')
                                     ->join('categories', 'categories.id', '=', 'posts.category_id')
                                     ->where('categories.name', 'like', $term)
+                            )->union(
+                                $query->newQuery()
+                                    ->select('posts.id')
+                                    ->from('posts')
+                                    ->join('levels', 'levels.id', '=', 'posts.level_id')
+                                    ->where('levels.name', 'like', $term)
+                            );
+                    }, 'matches');
+            });
+        });
+    }
+    public function scopeSearchadmin($query, string $terms)
+    {
+        collect(str_getcsv($terms, '', '"'))->filter()->each(function ($term) use ($query) {
+            $term = "%" . $term . "%";
+            $query->whereIn('id', function ($query) use ($term) {
+                $query->select('id')
+                    ->from(function ($query) use ($term) {
+                        $query->select('id')
+                            ->from('posts')
+                            ->where('title', 'like', $term)
+                            ->orWhere('body', 'like', $term)
+                            ->orWhere('excerpt','like',$term)
+                            ->union(
+                                $query->newQuery()
+                                    ->select('posts.id')
+                                    ->from('posts')
+                                    ->join('categories', 'categories.id', '=', 'posts.category_id')
+                                    ->where('categories.name', 'like', $term)
+                            )->union(
+                                $query->newQuery()
+                                    ->select('posts.id')
+                                    ->from('posts')
+                                    ->join('statuses', 'statuses.id', '=', 'posts.status_id')
+                                    ->where('statuses.name', 'like', $term)
+                            )->
+                            union(
+                                $query->newQuery()
+                                    ->select('posts.id')
+                                    ->from('posts')
+                                    ->join('levels', 'levels.id', '=', 'posts.level_id')
+                                    ->where('levels.name', 'like', $term)
                             );
                     }, 'matches');
             });
@@ -46,6 +84,14 @@ class Post extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
     public function isActive()
     {
@@ -85,10 +131,6 @@ class Post extends Model
             '6' => 'slate',
         ][$this->status_id] ?? 'gray';
     }
-
-    // public function getDateForHumansAttribute(){
-    //     return $this->date->format('M, d y');
-    // }
     /**
      * Get the author that owns the Post
      *
@@ -98,19 +140,5 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array<string, mixed>
-     */
-    public function toSearchableArray(): array
-    {
-        $array = $this->toArray();
-
-        // Customize the data array...
-
-        return $array;
     }
 }
