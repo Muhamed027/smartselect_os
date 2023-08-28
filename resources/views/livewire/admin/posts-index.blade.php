@@ -2,9 +2,9 @@
     <div class="relative  shadow-md sm:rounded-xl mt-12">
         <div>
             <x-forms.input-text wire:model.live="search" placeholder="search for specific record "/>
-            
+
         </div>
-        <x-table.table>
+        <x-table.table wire:loading.class.delay.200ms="opacity-50">
             <x-slot name="head">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -36,7 +36,7 @@
             </x-slot>
             <x-slot name="body">
                 {{-- @dd($posts) --}}
-                @foreach ($posts as $post)
+                @forelse ($posts as $post)
                     <x-table.row>
                         <x-table.cell class="">{{ $post->title }}</x-table.cell>
                         <x-table.cell class="">{{ $post->excerpt }}</x-table.cell>
@@ -51,7 +51,16 @@
                         <x-table.cell class="">{{ $post->updated_at->format('M, d Y') }}</x-table.cell>
                         <x-table.cell class="">{{ $post->published_at ?? 'not yet' }}</x-table.cell>
                     </x-table.row>
-                @endforeach
+                @empty
+                <x-table.row>
+                    <x-table.cell colspan="8">
+                        <div class="items-center justify-center w-full">
+                            no result found for "{{ $search }}"    
+                        </div>    
+                    </x-table.cell>    
+                </x-table.row>    
+                @endforelse
+
             </x-slot>
         </x-table.table>
         <div>

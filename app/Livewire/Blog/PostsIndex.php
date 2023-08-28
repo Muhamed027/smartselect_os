@@ -20,7 +20,7 @@ class PostsIndex extends Component
     #[Url(keep: true)]
     public $category;
     #[Url(keep: false)]
-    public string $search;
+    public string $search='';
     #[Url(keep: false)]
     public $filter;
     public $levelCount;
@@ -77,8 +77,8 @@ class PostsIndex extends Component
             'categories' => Category::query()
                 ->select('id', 'name')
                 ->get(),
-            'search_result'=>Post::when(
-                strlen($this->search) >= 2,
+            'search_result'=>Post::query()->when(
+                $this->search!=='' && strlen($this->search) >= 1,
                 fn ($query) =>
                 $query->search($this->search)
             )

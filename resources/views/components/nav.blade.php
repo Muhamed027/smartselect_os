@@ -37,7 +37,7 @@
                     <a href="#" class="hover:bg-gray-700 py-2  block "><small
                             class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Profile</span></a>
                     @admin
-                        <a href="/admin" class="hover:bg-gray-700 py-2  block ml-"><small
+                        <a href="{{ route('admin.home') }}" class="hover:bg-gray-700 py-2  block ml-"><small
                                 class="blue-text-gradient font-bold mr-2 text-start ml-2"> //</small><span>Dashboard</span></a>
                     @endadmin
                     <div class="hover:bg-gray-700 py-2 flex items-center ">

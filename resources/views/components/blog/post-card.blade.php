@@ -2,7 +2,7 @@
     class="transition-all  dark:bg-gray-900 dark:hover:bg-gray-950 border bg-gray-50 hover:bg-gray-200  border-gray-400  dark:border-blue-800   rounded-xl" style="transition: 0.5s ;">
     <div class="py-6 px-5">
         <div>
-            <img src="./images/illustration-3.png" alt="Blog Post illustration" class="rounded-xl">
+            <img src="{{ asset('/images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
         </div>
 
         <div class="mt-8 flex flex-col justify-between">

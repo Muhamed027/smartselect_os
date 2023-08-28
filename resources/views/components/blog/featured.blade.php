@@ -3,15 +3,15 @@
     <div class="py-6 px-5 lg:flex">
         <div class="flex-1 space-y-12 lg:mr-8 ">
             <div class="overflow-hidden rounded-xl">
-                <img src="./images/illustration-1.png" alt="Blog Post illustration"
+                <img src="{{ asset('/images/illustration-1.png') }}" alt="Blog Post illustration"
                     class="rounded-xl border dark:border-indigo-200 hover:border-indigo-300 hover:scale-105 overflow-hidden transition-all ease-in-out hover:rotate-1 duration-300">
             </div>
             <div class="hidden md:flex justify-between ">
-                <img src="./images/illustration-2.png" alt="Blog Post illustration"
+                <img src="{{ asset('/images/illustration-1.png') }}" alt="Blog Post illustration"
                     class="rounded-xl w-24 h-24 border dark:border-indigo-200 border-indigo-950 hover:border-gray-200 hover:scale-105 transition-all ease-in-out duration-150">
-                <img src="./images/illustration-3.png" alt="Blog Post illustration"
+                <img src="{{ asset('/images/illustration-1.png') }}"
                     class="rounded-xl w-24 h-24 border border-indigo-200 hover:border-indigo-300 hover:scale-105 transition-all ease-in-out duration-150">
-                <img src="./images/illustration-4.png" alt="Blog Post illustration"
+                <img src="{{ asset('/images/illustration-1.png') }}"
                     class="rounded-xl w-24 h-24 border border-indigo-200 hover:border-indigo-300 hover:scale-105 transition-all ease-in-out duration-150">
 
             </div>
