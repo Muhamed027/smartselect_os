@@ -13,6 +13,8 @@ class PostsIndex extends Component
     use WithPagination;
     #[Url(keep: false)]
     public string $search = '';
+    public string $sortField;
+    public string $sortDirection='asc';
 
     public function render()
     {

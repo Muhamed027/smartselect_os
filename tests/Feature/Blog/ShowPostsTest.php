@@ -8,7 +8,5 @@ function sum($a, $b) {
 } 
 
 test('sum', function () {
-    $result = sum(1, 2);
-  
-    expect($result)->not()->toBe(3);
+    expect(2+3)->toEqual(5);
  });

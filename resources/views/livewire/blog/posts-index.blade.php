@@ -1,8 +1,7 @@
 <div>
     {{-- @dump($search_result) --}}
     <div class="relative max-w-4xl mx-auto space-x-8 flex justify-around items-center mt-8 text-gray-400">
-        <x-modal-search :search_result="$search_result->toArray()"
-                        :search_result_count="$search_result_count"/>
+        <x-modal-search :search_result="$search_result->toArray()" :search_result_count="$search_result_count" />
         <div
             class="relative flex w-1/3 lg:inline-flex items-center bg-gray-50 border overflow-hidden  border-gray-400 dark:border-blue-800  dark:bg-gray-900 rounded-xl">
             <select wire:model.live.debounce.100ms="category"
@@ -49,8 +48,8 @@
             @admin
                 <x-create-new-resource uri="blog.create" text="Add new Article" />
             @endadmin
-            <h2 class="text-blue-950 font-semibold ml-2 dark:text-gray-400 ">Articles:</h2>
-            <x-blog.aside-posts />
+            <h2 class="text-blue-950 font-semibold ml-2 dark:text-gray-400 ">Popular Articles:</h2>
+            <x-blog.aside-posts :posts="$posts" />
         </aside>
         <div class="w-3/4 pb-4 px-8 space-y-12 mt-4 ">
             <nav
@@ -94,7 +93,8 @@
                         </div>
                     @endif
 
-                    <div class="text-black dark:text-white">{{ $posts->appends(request()->query())->links('vendor.livewire.post-index-pagination') }}</div>
+                    <div class="text-black dark:text-white">
+                        {{ $posts->appends(request()->query())->links('vendor.livewire.post-index-pagination') }}</div>
                 @else
                     there is no result
                 @endif

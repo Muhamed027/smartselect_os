@@ -45,7 +45,7 @@
                 </div>
 
                 <div>
-                    <a href="#"
+                    <a href="{{ route('blog.show',$post->slug) }}"
                         class="transition-colors duration-300 text-xs font-semibold dark:bg-gray-700  dark:hover:bg-gray-600   bg-gray-300 hover:bg-gray-400 rounded-full py-2 px-8">Read
                         More
                     </a>

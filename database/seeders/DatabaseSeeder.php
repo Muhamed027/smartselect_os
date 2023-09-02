@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
     Category::factory()->create(['name' => 'Entertainment and Gaming', 'classes' => 'border-amber-400  text-amber-400 hover:border-amber-500  hover:text-amber-500']);
     Category::factory()->create(['name' => 'Green Living and Sustainability', 'classes' => 'border-lime-400  text-lime-400 hover:border-lime-500  hover:text-lime-500']);
     Category::factory()->create(['name' => 'Art and Craft Supplies', 'classes' => 'border-emerald-400  text-emerald-400 hover:border-emerald-500  hover:text-emerald-500']);
-    Category::factory()->create(['name' => 'Personal Development and Self-Care', 'classes' => 'border-violet-400  text-violet-400 hover:border-violet-500  hover:text-violet-500']);
+    Category::factory()->create(['name' => 'Personal Development and Self-Care', 'classes' => 'trborder-violet-400  text-violet-400 hover:border-violet-500  hover:text-violet-500']);
     Category::factory()->create(['name' => 'Tech Tutorials and How-Tos', 'classes' => 'border-Fuchsia-400  text-Fuchsia-400 hover:border-Fuchsia-500  hover:text-Fuchsia-500']);
 
 

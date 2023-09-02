@@ -65,7 +65,7 @@
                         </div>
                         <ul x-show="show" class="ml-2 space-y-4 py-2  duration-700 transition-all divide-blue-800">
                             <li><a href="#"
-                                    class=" rounded-xl px-4 py-2 bg-gradient-to-r  from-red-300 via-pink-400 to-red-500 hover:from-red-800 hover:via-pink-400 hover:to-red-600  transition-all duration-300 ease-in-out bg-clip-text text-transparent "><small
+                                    class=" rounded-xl px-4 py-2  "><small
                                         class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Home</span></a>
                             </li>
                             <li><a href="#" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small
@@ -88,8 +88,8 @@
 
                         </div>
                         <ul x-show="show" class="ml-2 space-y-4 py-2   divide-blue-800">
-                            <li><a href="{{ route('blog.admin.index') }}" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small
-                                        class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Posts</span></a>
+                            <li><a href="{{ route('blog.admin.index') }}" class=" rounded-xl px-4 py-2 hover:text-gray-400 {{ Request::routeIs('blog.admin.index') ? 'red-text-gradient-with-hover':'' }}"><small
+                                        class="blue-text-gradient font-bold mr-2 text-start ml-2 ">//</small><span>Posts</span></a>
                             </li>
                             <li><a href="#" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small
                                         class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Categories</span></a>
@@ -111,7 +111,7 @@
                             </svg>
 
                         </div>
-                        <ul x-show="show" class="ml-2 space-y-4 py-2">
+                        {{-- <ul x-show="show" class="ml-2 space-y-4 py-2">
                             <li><a href="#" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small
                                         class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Products</span></a>
                             </li>
@@ -124,7 +124,7 @@
                             <li><a href="#" class=" rounded-xl px-4 py-2 hover:text-gray-400 "><small
                                         class="blue-text-gradient font-bold mr-2 text-start ml-2">//</small><span>Categories</span></a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>

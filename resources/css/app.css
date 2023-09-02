@@ -4,7 +4,7 @@
 
 .aside-post::before {
     position: absolute;
-    width: 7px;
+    width: 4px;
     height: 56px;
     left: 0;
     top: 0;
@@ -14,7 +14,7 @@
 }
 .aside-post-white::before {
     position: absolute;
-    width: 3px;
+    width: 4px;
     height: 55px;
     left: 0;
     top: 0;
@@ -72,6 +72,9 @@
 
 .profile-setting{
     display: none;
+}
+.level-item {
+    @apply transition border-b-4 border-gray-500 pb-3 ease-in duration-150 hover:text-gray-800 dark:hover:text-white px-2;
 }
 
 [x-cloak] { display: none !important; }
