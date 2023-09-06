@@ -2,7 +2,7 @@
     <main class="mt-8 gap-12 flex">
         <aside
             class=" hidden overflow-y-auto   lg:sticky lg:top-20  lg:flex lg:justify-start lg:items-start lg:flex-col w-1/4 pb-10 px-8  h-full lg  space-y-2   ">
-            <h2 class="text-blue-950 font-semibold ml-2 dark:text-indigo-100 ">Articles:</h2>
+            <h2 class="text-blue-950 font-semibold ml-2 dark:text-indigo-100 ">Popular Articles:</h2>
             <x-blog.aside-posts />
         </aside>
         <div class="w-3/4 pb-10 px-8 space-y-4 mt-8 ">

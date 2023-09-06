@@ -1,4 +1,4 @@
-@props(['search_result', 'search_result_count'])
+@props(['search_result','search_result_count'])
 
 <div x-data="{ isOpen: false }"
      x-on:open-search-modal.window="isOpen=true, $nextTick(()=>$refs.search_field.focus())"
@@ -46,10 +46,10 @@
                                                 </div>
                                                 <div>
                                                     <h4 class="text-sm text-start line-clamp-1 hover:underline"><a
-                                                            href="{{ route('blog.show', $result['slug']) }}">
-                                                            {{ $result['title'] }} </a></h4>
+                                                            href="{{ route('blog.show', $result->slug) }}">
+                                                            {{ $result->title }} </a></h4>
                                                     <div class="px-2 py-1 text-xs">
-                                                        {{ $result['excerpt'] }}
+                                                        {{ $result->excerpt }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="dark:bg-gray-900 bg-white px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
 
-                    <button type="button" x-on:click="isOpen=false"
+                    <button type="button" x-on:click="isOpen=false ,$dispatch('search_modal_closed')"
                         class="mt-3 inline-flex w-full justify-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm ring-1 ring-inset ring-gray-900 hover:bg-gray- sm:mt-0 sm:w-auto">Cancel</button>
                 </div>
             </div>

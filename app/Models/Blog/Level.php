@@ -16,6 +16,7 @@ class Level extends Model
     }
     
     public  function getCount(){
+        
         return Post::query()
         ->selectRaw("count(*) as all_levels")
         ->selectRaw("count(case when level_id = 1 then 1 end ) as beginner")
