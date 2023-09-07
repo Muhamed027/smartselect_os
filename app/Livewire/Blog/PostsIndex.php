@@ -18,7 +18,7 @@ class PostsIndex extends Component
 
     #[Url(keep: false)]
     public $level;
-    #[Url(keep: true)]
+    #[Url(keep: false)]
     public $category;
     #[Url(keep: false)]
     public string $search = '';
@@ -66,30 +66,21 @@ class PostsIndex extends Component
         $posts = Post::query()
             ->select('id', 'title', 'slug', 'excerpt', 'user_id', 'level_id', 'category_id', 'created_at')
             ->with([
-                'author' => fn ($query) => $query->select('id', 'username', 'role', 'is_admin'),
-                'level' => fn ($query) => $query->select('id', 'name', 'classes'),
-                'category' => fn ($query) => $query->select('id', 'name', 'classes'),
-            ])->when($this->level && $this->level !== 'All', function ($query) use ($levels) {
+                'author' => fn ($query) => $query->select('users.id', 'username', 'role', 'is_admin'),
+                'level' => fn ($query) => $query->select('levels.id', 'name', 'classes'),
+                'category' => fn ($query) => $query->select('categories.id', 'name', 'classes'),
+            ])
+            ->when($this->level && $this->level !== 'All', function ($query) use ($levels) {
                 return $query->where('level_id', $levels->get($this->level));
-            })->when($this->category && $this->category !== 'All', function ($query) use ($categories) {
+            })
+            ->when($this->category && $this->category !== 'All', function ($query) use ($categories) {
                 return $query->where('category_id', $categories->pluck('id', 'name')->get($this->category));
-            })->paginate(Post::PAGINATION_COUNT);
+            })
+            ->paginate(Post::PAGINATION_COUNT);
 
-        if ($this->search !== "") {
-            $search_result = Post::search($this->search)->get();
-            $search_result_count = Post::search($this->search)->count();
-        } else {
-            $search_result = [];
-            $search_result_count = 0;
-        }
-        $level_count = Post::query()
-            ->selectRaw("count(*) as all_levels")
-            ->selectRaw("count(case when level_id = 1 then 1 end ) as beginner")
-            ->selectRaw("count(case when level_id = 2 then 1 end ) as intermediate")
-            ->selectRaw("count(case when level_id = 3 then 1 end ) as advanced")
-            ->selectRaw("count(case when level_id = 4 then 1 end ) as expert")
-            ->first()
-            ->toArray();
+        $search_result = $this->search !== "" ? Post::search($this->search)->get() : [];
+        $search_result_count = $this->search !== "" ?  Post::search($this->search)->count() : 0;
+
         return View::make('livewire.blog.posts-index', [
             'posts' => $posts,
             'search_result' => $search_result,

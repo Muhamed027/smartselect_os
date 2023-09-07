@@ -74,15 +74,6 @@
                 <p class="mb-4">
                     <a href="#!" class="text-neutral-600 dark:text-neutral-200">Angular</a>
                 </p>
-                <p class="mb-4">
-                    <a href="#!" class="text-neutral-600 dark:text-neutral-200">React</a>
-                </p>
-                <p class="mb-4">
-                    <a href="#!" class="text-neutral-600 dark:text-neutral-200">Vue</a>
-                </p>
-                <p>
-                    <a href="#!" class="text-neutral-600 dark:text-neutral-200">Laravel</a>
-                </p>
             </div>
             <!-- Useful links section -->
             <div class="">

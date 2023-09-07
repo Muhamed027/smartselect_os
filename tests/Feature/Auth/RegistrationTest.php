@@ -21,7 +21,7 @@ test('is redirected if already logged in', function () {
 
     self::be($user);
 
-    self::get(route('register'))
+    self::get(route('user.register'))
         ->assertRedirect(route('home'));
 });
 
@@ -29,7 +29,7 @@ test('a user can register', function () {
     Event::fake();
 
     Livewire::test('auth.register-user')
-        ->set('name', 'Tall Stack')
+        ->set('username', 'Tall Stack')
         ->set('email', 'tallstack@example.com')
         ->set('password', 'password')
         ->set('passwordConfirmation', 'password')
@@ -44,9 +44,9 @@ test('a user can register', function () {
 
 test('name is required', function () {
     Livewire::test('auth.register-user')
-        ->set('name', '')
+        ->set('username', '')
         ->call('register')
-        ->assertHasErrors(['name' => 'required']);
+        ->assertHasErrors(['username' => 'required']);
 });
 
 test('email is required', function () {

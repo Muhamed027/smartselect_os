@@ -1,8 +1,10 @@
 <div class="overflow-x-auto">
     <div class="relative  shadow-md sm:rounded-xl mt-12">
-        <div>
+        <div class="flex items-center justify-between">
             <x-forms.input-text wire:model.live="search" placeholder="search for specific record "/>
-
+            <div>
+                <x-create-new-resource uri="blog.create" text="create new post" />
+            </div>
         </div>
         <x-table.table wire:loading.class.delay.200ms="opacity-50">
             <x-slot name="head">
@@ -35,7 +37,6 @@
                 </tr>
             </x-slot>
             <x-slot name="body">
-                {{-- @dd($posts) --}}
                 @forelse ($posts as $post)
                     <x-table.row>
                         <x-table.cell class="">{{ $post->title }}</x-table.cell>

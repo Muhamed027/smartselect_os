@@ -8,10 +8,10 @@
         <div class="mt-8 flex flex-col justify-between">
             <header>
                 <div class="space-x-2">
-                    <a href="#"
+                    <a href="{{ route('blog.index',['level'=>$post->level->name])}}"
                         class="px-3 py-1 border   rounded-full hover:opacity-50 text-xs uppercase font-bold  {{ $post->level->classes }}"
                         style="font-size: 10px">{{ $post->level->name }}</a>
-                    <a href="?category='caacaecea'"
+                    <a href="{{ route('blog.index',['category'=>$post->category->name])}}"
                         class="px-3 py-1 border  rounded-full hover:opacity-50  text-xs uppercase font-Bold  {{ $post->category->classes }}"
                         style="font-size: 10px">{{ $post->category->name }}</a>
                 </div>

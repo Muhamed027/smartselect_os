@@ -15,7 +15,7 @@ class RegisterUser extends Component
     #[Rule('required|min:3')]
     public  $username = '';
 
-    #[Rule('required|min:3|unique:users')]
+    #[Rule('required|min:3|unique:users|email')]
     public $email = '';
 
     #[Rule('required|min:8')]

@@ -2,8 +2,9 @@
 
 namespace App\Models\Blog;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -33,6 +34,15 @@ class Category extends Model
         ->selectRaw("count(case when category_id = 20 then 1 end ) as tech_tutorials_and_how_tos")
         ->first()
         ->toArray();
+    }
+     /**
+     * Get all of the posts for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
     }
     
 }
