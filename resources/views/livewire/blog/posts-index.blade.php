@@ -1,10 +1,10 @@
 <div>
     <x-slot:title>
-        Home
+        Blog
     </x-slot:title>
     {{-- @dump($search_result) --}}
     <div class="relative max-w-4xl mx-auto space-x-8 flex justify-around items-center mt-8 text-gray-400">
-        <x-modal-search :search_result="$search_result" :search_result_count="$search_result_count" />
+        <x-modals.blog-search :search_result="$search_result" :search_result_count="$search_result_count" />
         <div
             class="relative flex w-1/3 lg:inline-flex items-center bg-gray-50 border overflow-hidden  border-gray-400 dark:border-blue-800  dark:bg-gray-900 rounded-xl">
             <select wire:model.live.debounce.100ms="category"

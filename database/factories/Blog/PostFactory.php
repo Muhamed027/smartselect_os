@@ -19,7 +19,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create(),
+            'user_id' => rand(1,2),
             'category_id' =>rand(1,20),
             'level_id'=>1,  
             'status_id'=>1,

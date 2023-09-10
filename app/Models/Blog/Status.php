@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Status extends Model
 {
     use HasFactory;
-
+    const Draft=1;
     /**
      * Get all of the posts for the User
      *

@@ -46,6 +46,8 @@ Route::middleware('web')->prefix('blog')->group(function () {
 });
 Route::middleware(MustBeGlobalAdministrator::class)->prefix('admin')->group(function () {
     Route::get('/blog/posts/create',[AdminPostController::class,'create'])->name('blog.create');
+    Route::get('/blog/posts/{post:slug}/edit',[AdminPostController::class,'edit'])->name('blog.edit');
+    Route::get('/blog/posts/{post:slug}',[AdminPostController::class,'show'])->name('admin.blog.show');
     Route::get('/blog/posts',[AdminPostController::class,'index'])->name('blog.admin.index');
     Route::get('/',[AdminHomeController::class,'index'])->name('admin.home');
 });

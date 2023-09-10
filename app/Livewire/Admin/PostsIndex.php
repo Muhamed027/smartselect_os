@@ -19,7 +19,7 @@ class PostsIndex extends Component
     public function render()
     {
         // sleep(1);
-        return View::make('livewire.admin.posts-index', [
+        return View::make('livewire.admin.blog.posts-index', [
             'posts' => Post::query()
                 ->select('id', 'title', 'slug', 'excerpt', 'body', 'user_id', 'level_id', 'status_id', 'category_id', 'created_at', 'updated_at', 'published_at')
                 ->with([

@@ -20,18 +20,13 @@ class CreatePost extends Component
     public  $excerpt = "";
 
     #[Rule(['required', 'exists:categories,id'])]
-    public $category = "";
+    public int $category = 1;
 
     #[Rule(['required', 'exists:levels,id'])]
-    public $level = "";
-
-    #[Rule(['required', 'exists:statuses,id'])]
-    public $status = "";
+    public int  $level = 1;
 
     #[Rule(['required', 'min:200'])]
     public $body = "";
-
-    public $slug = "";
 
 
     public function AddDraftPost()
@@ -42,7 +37,7 @@ class CreatePost extends Component
                 'category_id' => $this->category,
                 'user_id' => Auth::user()->id,
                 'level_id' => $this->level,
-                'status_id' => $this->status,
+                'status_id' => Status::Draft,
                 'excerpt' => $this->excerpt,
                 'body' => $this->body,
             ]);
@@ -58,9 +53,6 @@ class CreatePost extends Component
                 ->select('id', 'name')
                 ->get(),
             'levels' => Level::query()
-                ->select('id', 'name')
-                ->get(),
-            'statuses' => Status::query()
                 ->select('id', 'name')
                 ->get(),
         ]);
